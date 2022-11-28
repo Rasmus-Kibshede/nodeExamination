@@ -1,0 +1,23 @@
+{
+  "type": "module",
+  "name": "nodeexamination",
+  "version": "0.0.1",
+  "description": "A node.js project for examination on KEA in copenhagen",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rasmus-Kibshede/nodeExamination.git"
+  },
+  "author": "Rasmus Kibshede",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rasmus-Kibshede/nodeExamination/issues"
+  },
+  "homepage": "https://github.com/Rasmus-Kibshede/nodeExamination#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
