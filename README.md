@@ -4,5 +4,6 @@ This is a node.js examination project
 
 TOOLS
  - Express
- - Nodemon
- - 
+ - Nodemon (Dynamisk opdatering)
+ - Dotenv (env variabler)
+ - Socket.io (Web sockets)
