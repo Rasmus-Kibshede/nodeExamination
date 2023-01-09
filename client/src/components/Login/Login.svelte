@@ -1,5 +1,5 @@
 <script>
-    import { BASE_URL, global_user } from "../../../store/globals";
+    import { BASE_URL, global_user } from "../../../store/globals.js";
 
     import { useNavigate, useLocation, Link } from "svelte-navigator";
 
@@ -13,8 +13,6 @@
             // @ts-ignore
             password: document.getElementById("login_password").value,
         };
-
-        console.log(user);
 
         if (!user.email || !user.password) {
             // @ts-ignore

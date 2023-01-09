@@ -15,11 +15,9 @@ router.post("/login", async (req, res, next) => {
 }, async (req, res, next) => {
     //Database check
     const [rows, fields] = await db.execute("SELECT * FROM users WHERE user_email=?", [req.body.email]);
-
     let passwordMatch;
-    if (rows) {
+    if (rows[0]) {
         passwordMatch = await passwordCompare(req.body.password, rows[0].user_password);
-        console.log(passwordMatch);
     }
 
     if (passwordMatch) {
@@ -32,7 +30,6 @@ router.post("/login", async (req, res, next) => {
     // Session set
     req.session.isLoggedIn = true;
     req.session.email = req.body.email;
-    console.log("session is set");
     res.status(200).send({ message: `Welcome ${req.body.email}` });
 });
 
