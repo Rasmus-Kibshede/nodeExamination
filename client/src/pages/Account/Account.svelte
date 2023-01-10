@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
     import { onMount } from "svelte";
     import { global_user, BASE_URL } from "../../../store/globals.js";
     const user = $global_user.user;
