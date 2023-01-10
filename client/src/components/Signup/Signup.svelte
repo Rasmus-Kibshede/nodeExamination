@@ -1,5 +1,5 @@
 <script>
-    import { BASE_URL } from "../../store/globals.js";
+    import { BASE_URL } from "../../../store/globals.js";
     import { useNavigate, useLocation } from "svelte-navigator";
 
     const navigate = useNavigate();
@@ -15,8 +15,6 @@
             firstname: document.getElementById("signup_firstname").value,
             // @ts-ignore
             lastname: document.getElementById("signup_lastname").value,
-            // @ts-ignore
-            age: document.getElementById("signup_age").value,
         };
 
         let response = await fetch(`${$BASE_URL}/signup`, {
@@ -57,9 +55,6 @@
 
     <label for="signup_lastname">Lastname:</label>
     <input type="text" id="signup_lastname" placeholder="Enter Lastname" />
-
-    <label for="signup_age">Age:</label>
-    <input type="number" id="signup_age" placeholder="Age" />
 
     <button on:click={signup}>Signup</button>
 </div>
