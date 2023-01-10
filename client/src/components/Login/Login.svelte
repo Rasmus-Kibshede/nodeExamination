@@ -56,6 +56,7 @@
         placeholder="Enter Email"
         id="login_email"
         name="email"
+        value="ralle@gmail.com"
         required
     />
     <label for="login_password">Password : </label>
@@ -64,6 +65,7 @@
         placeholder="Enter Password"
         id="login_password"
         name="password"
+        value="123"
         required
     />
     <button type="submit" on:click={login} class="button">Login</button>
@@ -73,10 +75,10 @@
 
 <!-- Forgot <a href="/"> password? </a> -->
 <style>
-    div {
-        display: grid;
-        justify-content: center;
-        justify-items: center;
-        row-gap: 10px;
+    #div_login {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: space-around;
     }
 </style>

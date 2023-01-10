@@ -8,6 +8,8 @@
   import Login from "./components/Login/Login.svelte";
 </script>
 
+<!-- <img src="../public/hogwarts.jpg" width="100%" alt="image of hogwarts shcool"> -->
+
 <Header />
 
 <main>
@@ -17,7 +19,6 @@
     <!-- <Route path="/signup" component={Signup} /> -->
     <PrivateRoute path="/account" let:location>
       <Account />
-      <Logout />
     </PrivateRoute>
   </Router>
 </main>
