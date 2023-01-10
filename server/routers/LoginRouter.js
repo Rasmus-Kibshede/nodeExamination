@@ -21,6 +21,7 @@ router.post("/login", async (req, res, next) => {
     }
 
     if (passwordMatch) {
+        req.session.user = rows[0]
         next();
     } else {
         res.status(400).send({ message: "Wrong email or password" });
@@ -30,7 +31,10 @@ router.post("/login", async (req, res, next) => {
     // Session set
     req.session.isLoggedIn = true;
     req.session.email = req.body.email;
-    res.status(200).send({ message: `Welcome ${req.body.email}` });
+    res.status(200).send({
+        message: `Welcome ${req.body.email}`,
+        user: req.session.user
+    });
 });
 
 router.get("/logout", (req, res) => {

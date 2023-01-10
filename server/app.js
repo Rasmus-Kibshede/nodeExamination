@@ -18,7 +18,10 @@ app.use(session({
 }));
 
 import loginRouter from "./routers/LoginRouter.js"
-app.use(loginRouter)
+app.use(loginRouter);
+
+import wandRouter from "./routers/WandRouter.js"
+app.use(wandRouter);
 
 
 
