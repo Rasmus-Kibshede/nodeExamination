@@ -23,8 +23,7 @@
     header {
         width: 30%;
         border: solid 1px white;
-        background-color: antiquewhite;
-        opacity: 0.9;
+        background-color: rgba(250, 235, 215, 0.9);
     }
 
     #main_menu {
