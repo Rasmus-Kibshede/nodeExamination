@@ -15,13 +15,17 @@ router.post("/login", async (req, res, next) => {
 }, async (req, res, next) => {
     //Database check
     const [rows, fields] = await db.execute("SELECT * FROM users WHERE user_email=?", [req.body.email]);
+    const user = rows[0];
     let passwordMatch;
-    if (rows[0]) {
+    if (user) {
         passwordMatch = await passwordCompare(req.body.password, rows[0].user_password);
     }
 
     if (passwordMatch) {
-        req.session.user = rows[0]
+        delete user.user_password
+
+        /* TODO skal forbinelsen til næste lag laves om? Mangler viden */
+        req.session.user = user
         next();
     } else {
         res.status(400).send({ message: "Wrong email or password" });
