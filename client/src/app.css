@@ -43,8 +43,7 @@ input {
 label {
   font-size: large;
   margin: 10px 0;
-  color: white;
-  text-shadow: 1px 1px 1px black;
+  font-weight: bold;
 }
 
 button {

@@ -26,6 +26,9 @@ app.use(wandRouter);
 import signupRouter from "./routers/SigupRouter.js"
 app.use(signupRouter)
 
+import userRouter from "./routers/UserRouter.js"
+app.use(userRouter)
+
 
 
 const PORT = 8080 || process.env.PORT;
