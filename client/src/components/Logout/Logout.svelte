@@ -8,6 +8,7 @@
     //TODO make logout
     async function handleLogout() {
         $global_user = null;
+        localStorage.clear();
         await fetch(`${$BASE_URL}/logout`);
         // @ts-ignore
         toastr.success("Logged out", "You are now logged out");

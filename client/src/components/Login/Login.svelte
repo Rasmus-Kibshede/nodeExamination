@@ -32,6 +32,7 @@
             // checks if the server response with a ok and then sets a global user
             if (response.ok) {
                 $global_user = result.user;
+                localStorage.setItem("global_user", JSON.stringify($global_user))
                 const from = ($location.state && $location.state.from) || "/";
                 navigate(from, { replace: true });
 
