@@ -5,5 +5,5 @@
 
 <User />
 
-<Wand />
 
+<Wand />

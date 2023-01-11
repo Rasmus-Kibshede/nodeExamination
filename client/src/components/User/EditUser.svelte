@@ -1,22 +1,26 @@
 <script>
     import { global_user } from "../../../store/globals.js";
     const user = $global_user;
+
+    function saveUser() {}
 </script>
 
-<h1>Welcome {user.user_firstname} {user.user_lastname}</h1>
-
 <div id="user_info_box">
-    <div class="flex_box_span">
-        <span>Firstname: </span>
-        <span>{user.user_firstname}</span>
+    <div class="flex_box">
+        <label for="">Firstname: </label>
+        <input bind:value={user.user_firstname} />
     </div>
-    <div class="flex_box_span">
-        <span>Lastname: </span>
-        <span>{user.user_lastname}</span>
+    <div class="flex_box">
+        <label for="">Lastname: </label>
+        <input bind:value={user.user_lastname} />
     </div>
-    <div class="flex_box_span">
-        <span>Email: </span>
-        <span>{user.user_email}</span>
+    <div class="flex_box">
+        <label for="">Email: </label>
+        <input bind:value={user.user_email} />
+    </div>
+
+    <div class="flex_box">
+        <button on:click={saveUser}>Save</button>
     </div>
 </div>
 
@@ -25,7 +29,6 @@
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        align-content: space-around;
         text-align: start;
         width: 50%;
         margin: 20px auto;
@@ -35,15 +38,10 @@
         padding: 10px 0;
     }
 
-    #user_info_box span:nth-child(odd) {
-        font-weight: bold;
-    }
-
-    .flex_box_span {
+    .flex_box {
         border-bottom: solid 1px black;
         display: flex;
-        width: 50%;
-        justify-content: space-between;
         margin: 10px 0;
+        justify-content: space-evenly;
     }
 </style>

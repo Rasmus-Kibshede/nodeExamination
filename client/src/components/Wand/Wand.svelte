@@ -16,23 +16,26 @@
     onMount(fetchWand);
 </script>
 
+{#if user.fk_wand_id != null}
+    <h2>Wand: {wand.wand_name}</h2>
 
-<h2>Wand: {wand.wand_name}</h2>
-
-<div id="wand_box">
-    <div>
-        <h4>Core</h4>
-        <span>{wand.wand_core}</span>
+    <div id="wand_box">
+        <div>
+            <h4>Core</h4>
+            <span>{wand.wand_core}</span>
+        </div>
+        <div>
+            <h4>Wood</h4>
+            <span>{wand.wand_wood}</span>
+        </div>
+        <div>
+            <h4>length</h4>
+            <span>{wand.wand_length}</span>
+        </div>
     </div>
-    <div>
-        <h4>Wood</h4>
-        <span>{wand.wand_wood}</span>
-    </div>
-    <div>
-        <h4>length</h4>
-        <span>{wand.wand_length}</span>
-    </div>
-</div>
+    {:else}
+    <h2>Create a wand here</h2>
+{/if}
 
 <style>
     #wand_box {
@@ -40,10 +43,11 @@
         justify-content: space-around;
         background-color: rgba(250, 235, 215, 0.5);
         border: solid 1px white;
+        border-radius: 2px;
         padding: 10px 0;
     }
 
-    #wand_box div{
+    #wand_box div {
         width: 33%;
     }
 </style>

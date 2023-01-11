@@ -17,6 +17,7 @@
 
             {#if $global_user}
                 <Link to="/account"><span class="menuLink">Account</span></Link>
+                <Link to="editaccout"><span class="menuLink">Settings</span></Link>
 
                 {#if $global_user.fk_role_id == 1}
                     <Link to="/admin"><span class="menuLink">Admin</span></Link>
@@ -41,7 +42,7 @@
     #main_menu {
         display: flex;
         flex-direction: column;
-        height: calc(100vh - 400px);
+        /* height: calc(100vh - 400px); */
         justify-content: center;
     }
 

@@ -36,26 +36,37 @@ main {
 
 input {
   padding: 5px;
-  font-size: 16px;
+  font-size: large;
+  margin: 10px 0;
 }
 
 label {
-  font-size: 16px;
+  font-size: large;
   margin: 10px 0;
   color: white;
   text-shadow: 1px 1px 1px black;
-  font-size: 22px;
 }
 
 button {
-  margin: 10px 0;
   padding: 5px 0;
+  width: 50%;
+  display: block;
+  margin: 10px auto;
+  cursor: pointer;
+  background-color: rgb(250, 235, 215);
+  border: solid 1px black;
+  font-size: large;
+  text-shadow: 1px 1px 1px white;
+}
+
+button:hover {
+  background-color: rgb(252, 223, 185);
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
   padding: 10px 0;
   text-shadow: 1px 1px 1px white;
 }
@@ -64,4 +75,11 @@ h1 {
   display: flex;
   width: 100%;
   text-align: center;
+}
+
+#wrapper{
+  width: 80%;
+  margin: 0 auto;
+  background-color: rgba(250, 235, 215, 0.7);
+  padding: 20px;
 }
