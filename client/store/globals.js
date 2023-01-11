@@ -1,4 +1,4 @@
-import { readable, writable, get } from "svelte/store";
+import { readable, writable } from "svelte/store";
 
 let localData = localStorage.getItem("global_user")
 export const global_user = writable(localData ? JSON.parse(localData) : null);

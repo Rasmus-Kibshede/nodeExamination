@@ -6,6 +6,11 @@
 </script>
 
 <header>
+    <img
+        width="200px"
+        src="https://icons-for-free.com/iconfiles/png/512/hallows+harry+outline+potter+icon-1320183608275058865.png"
+        alt="The deadly hallows"
+    />
     <Router>
         <nav id="main_menu">
             <Link to="/"><span class="menuLink">Home</span></Link>
@@ -29,16 +34,21 @@
         width: 30%;
         border: solid 1px white;
         background-color: rgba(250, 235, 215, 0.9);
+        height: 100vh;
+        max-height: 100vh;
     }
 
     #main_menu {
         display: flex;
-        height: 100%;
         flex-direction: column;
-        align-content: space-around;
+        height: calc(100vh - 400px);
         justify-content: center;
-        height: 100vh;
     }
+
+   /*  #main_menu img {
+        margin: 0 auto;
+        margin-bottom: 50px;
+    } */
 
     .menuLink {
         display: inline-block;
