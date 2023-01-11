@@ -6,6 +6,7 @@
   import Header from "./components/Header/Header.svelte";
   import Login from "./components/Login/Login.svelte";
   import Signup from "./components/Signup/Signup.svelte";
+  import Admin from "./pages/Admin/Admin.svelte";
 </script>
 
 <!-- <img src="../public/hogwarts.jpg" width="100%" alt="image of hogwarts shcool"> -->
@@ -19,6 +20,9 @@
     <Route path="/signup" component={Signup} />
     <PrivateRoute path="/account" let:location>
       <Account />
+    </PrivateRoute>
+    <PrivateRoute path="/admin" let:location>
+      <Admin />
     </PrivateRoute>
   </Router>
 </main>

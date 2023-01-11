@@ -31,8 +31,7 @@
 
             // checks if the server response with a ok and then sets a global user
             if (response.ok) {
-                console.log(result);
-                $global_user = result;
+                $global_user = result.user;
                 const from = ($location.state && $location.state.from) || "/";
                 navigate(from, { replace: true });
 

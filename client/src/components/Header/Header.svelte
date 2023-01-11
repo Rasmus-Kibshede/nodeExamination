@@ -1,6 +1,7 @@
 <script>
     import { Router, Link, useMatch } from "svelte-navigator";
     import { global_user } from "../../../store/globals.js";
+    import Admin from "../../pages/Admin/Admin.svelte";
     import Logout from "../Logout/Logout.svelte";
 </script>
 
@@ -11,6 +12,10 @@
 
             {#if $global_user}
                 <Link to="/account"><span class="menuLink">Account</span></Link>
+
+                {#if $global_user.fk_role_id == 1}
+                    <Link to="/admin"><span class="menuLink">Admin</span></Link>
+                {/if}
                 <Logout />
             {:else}
                 <Link to="/login"><span class="menuLink">Login</span></Link>

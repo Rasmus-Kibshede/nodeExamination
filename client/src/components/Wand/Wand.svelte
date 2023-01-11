@@ -2,7 +2,7 @@
     // @ts-nocheck
     import { onMount } from "svelte";
     import { global_user, BASE_URL } from "../../../store/globals.js";
-    const user = $global_user.user;
+    const user = $global_user;
 
     let wand = [];
 
@@ -10,10 +10,7 @@
         let response = await fetch(`${$BASE_URL}/wand/${user.fk_wand_id}`);
 
         const result = await response.json();
-        const message = result.message;
-        console.log(message);
         wand = result.wand;
-        console.log(wand);
     }
 
     onMount(fetchWand);
