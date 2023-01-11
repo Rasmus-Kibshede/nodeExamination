@@ -7,5 +7,3 @@
 
 <Wand />
 
-<style>
-</style>
