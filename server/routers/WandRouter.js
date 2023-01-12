@@ -6,7 +6,6 @@ const router = Router();
 
 
 router.get("/wand/:id", async (req, res) => {
-    console.log("test");
     const [rows, fields] = await db.execute("SELECT * FROM wands where wand_id = ?", [req.params.id]);
 
     res.send({ wand: rows[0] })

@@ -18,7 +18,7 @@ a:hover {
   color: black;
 }
 
-i{
+i {
   margin: 0 10px;
 }
 
@@ -26,6 +26,7 @@ body {
   background-image: url("../public/hogwarts.jpg");
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 
@@ -36,6 +37,8 @@ main {
   justify-content: center;
   flex-direction: column;
   background-color: rgba(112, 112, 112, 0.8);
+  margin-left: 20%;
+  min-height: 100vh;
 }
 
 input {
@@ -80,7 +83,7 @@ h1 {
   text-align: center;
 }
 
-#wrapper{
+#wrapper {
   width: 80%;
   margin: 0 auto;
   background-color: rgba(250, 235, 215, 0.7);

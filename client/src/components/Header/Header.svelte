@@ -108,11 +108,11 @@
 
 <style>
     header {
-        width: 30%;
+        width: 20%;
         border: solid 1px white;
         background-color: rgba(250, 235, 215, 0.9);
         height: 100vh;
-        max-height: 100vh;
+        position: fixed;
     }
 
     #main_menu {
