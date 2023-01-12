@@ -75,64 +75,73 @@
     }
 </script>
 
-<div>
-    <table id="user_info_box">
-        <tr class="flex_box">
-            <td><label for="">Wand name: </label></td>
-            <td
-                ><input
-                    placeholder="Enter a wand name"
-                    bind:value={wand.wand_name}
-                /></td
-            >
-        </tr>
-        <tr class="flex_box">
-            <td><label for="">Core: </label></td>
-            <td>
-                <select
-                    name="Cores"
-                    bind:value={selectedCore}
-                    on:change={() => (wand.wand_core = selectedCore)}
+{#if $global_user.fk_wand_id == null}
+    <div>
+        <table id="user_info_box">
+            <tr class="flex_box">
+                <th><h2>Create your wand</h2></th>
+            </tr>
+            <tr class="flex_box">
+                <td><label for="">Wand name: </label></td>
+                <td
+                    ><input
+                        placeholder="Enter a wand name"
+                        bind:value={wand.wand_name}
+                    /></td
                 >
-                    <option value="0" selected disabled hidden
-                        >Choose Core</option
+            </tr>
+            <tr class="flex_box">
+                <td><label for="">Core: </label></td>
+                <td>
+                    <select
+                        name="Cores"
+                        bind:value={selectedCore}
+                        on:change={() => (wand.wand_core = selectedCore)}
                     >
-                    {#each cores as core}
-                        <option value={core.core_name}>{core.core_name}</option>
-                    {/each}
-                </select>
-            </td>
-        </tr>
-        <tr class="flex_box">
-            <td><label for="">Wood: </label></td>
-            <td>
-                <select
-                    name="Wood"
-                    bind:value={selectedWood}
-                    on:change={() => (wand.wand_wood = selectedWood)}
+                        <option value="0" selected disabled hidden
+                            >Choose Core</option
+                        >
+                        {#each cores as core}
+                            <option value={core.core_name}
+                                >{core.core_name}</option
+                            >
+                        {/each}
+                    </select>
+                </td>
+            </tr>
+            <tr class="flex_box">
+                <td><label for="">Wood: </label></td>
+                <td>
+                    <select
+                        name="Wood"
+                        bind:value={selectedWood}
+                        on:change={() => (wand.wand_wood = selectedWood)}
+                    >
+                        <option value="0" selected disabled hidden
+                            >Choose Wood</option
+                        >
+                        {#each wood as w}
+                            <option value={w.wood_name}>{w.wood_name}</option>
+                        {/each}
+                    </select>
+                </td>
+            </tr>
+            <tr class="flex_box">
+                <td><label for="">Wand length: </label></td>
+                <td><input type="number" bind:value={wand.wand_length} /></td>
+            </tr>
+            <tr>
+                <td class="flex_box"
+                    ><button on:click={saveWand}
+                        ><i class="fa-solid fa-floppy-disk" /> Create</button
+                    ></td
                 >
-                    <option value="0" selected disabled hidden
-                        >Choose Wood</option
-                    >
-                    {#each wood as w}
-                        <option value={w.wood_name}>{w.wood_name}</option>
-                    {/each}
-                </select>
-            </td>
-        </tr>
-        <tr class="flex_box">
-            <td><label for="">Wand length: </label></td>
-            <td><input type="number" bind:value={wand.wand_length} /></td>
-        </tr>
-        <tr>
-            <td class="flex_box"
-                ><button on:click={saveWand}
-                    ><i class="fa-solid fa-floppy-disk" /> Create</button
-                ></td
-            >
-        </tr>
-    </table>
-</div>
+            </tr>
+        </table>
+    </div>
+    {:else}
+    <h2>You already have a wand</h2>
+{/if}
 
 <style>
     #user_info_box {

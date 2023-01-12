@@ -1,15 +1,12 @@
 <script>
     // @ts-nocheck
-    import { onMount } from "svelte";
     import { global_user, BASE_URL } from "../../../store/globals.js";
     const user = $global_user;
 
     $: wand = [];
 
     async function fetchWand() {
-        
         let response = await fetch(`${$BASE_URL}/wand/${user.fk_wand_id}`);
-
 
         const result = await response.json();
         console.log(result);
@@ -17,37 +14,29 @@
         wand = result.wand;
     }
 
-   /*  onMount(fetchWand); */
-    fetchWand()
+    /*  onMount(fetchWand); */
+    fetchWand();
 </script>
 
-{#if user.fk_wand_id != null}
-    <h2>
-        <i class="fa-solid fa-wand-magic-sparkles" />Wand: {wand.wand_name}
-        <i class="fa-solid fa-wand-magic-sparkles" />
-    </h2>
+<h2>
+    <i class="fa-solid fa-wand-magic-sparkles" />Wand: {wand.wand_name}
+    <i class="fa-solid fa-wand-magic-sparkles" />
+</h2>
 
-    <div id="wand_box">
-        <div>
-            <h4>Core</h4>
-            <span>{wand.wand_core}</span>
-        </div>
-        <div>
-            <h4>Wood</h4>
-            <span>{wand.wand_wood}</span>
-        </div>
-        <div>
-            <h4>length</h4>
-            <span>{wand.wand_length}</span>
-        </div>
+<div id="wand_box">
+    <div>
+        <h4>Core</h4>
+        <span>{wand.wand_core}</span>
     </div>
-{:else}
-    <h2>
-        <i class="fa-solid fa-wand-magic-sparkles" />
-        Create a wand here
-        <i class="fa-solid fa-wand-magic-sparkles" />
-    </h2>
-{/if}
+    <div>
+        <h4>Wood</h4>
+        <span>{wand.wand_wood}</span>
+    </div>
+    <div>
+        <h4>length</h4>
+        <span>{wand.wand_length}</span>
+    </div>
+</div>
 
 <style>
     #wand_box {
