@@ -26,7 +26,7 @@
       <PrivateRoute path="/admin" let:location>
         <Admin />
       </PrivateRoute>
-      <PrivateRoute path="/editaccout" let:location>
+      <PrivateRoute path="/settings" let:location>
         <EditAcount />
       </PrivateRoute>
     </Router>

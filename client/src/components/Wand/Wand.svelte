@@ -17,7 +17,10 @@
 </script>
 
 {#if user.fk_wand_id != null}
-    <h2>Wand: {wand.wand_name}</h2>
+    <h2>
+        <i class="fa-solid fa-wand-magic-sparkles" />Wand: {wand.wand_name}
+        <i class="fa-solid fa-wand-magic-sparkles" />
+    </h2>
 
     <div id="wand_box">
         <div>
@@ -33,8 +36,12 @@
             <span>{wand.wand_length}</span>
         </div>
     </div>
-    {:else}
-    <h2>Create a wand here</h2>
+{:else}
+    <h2>
+        <i class="fa-solid fa-wand-magic-sparkles" />
+        Create a wand here
+        <i class="fa-solid fa-wand-magic-sparkles" />
+    </h2>
 {/if}
 
 <style>

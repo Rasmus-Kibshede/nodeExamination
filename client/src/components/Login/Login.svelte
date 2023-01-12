@@ -49,7 +49,8 @@
 <div id="div_login">
     <h1>Login</h1>
 
-    <label for="login_email">Email : </label>
+    <label for="login_email">Email <i class="fa-solid fa-envelope" /></label>
+
     <input
         type="email"
         placeholder="Enter Email"
@@ -58,7 +59,7 @@
         value="ralle@gmail.com"
         required
     />
-    <label for="login_password">Password : </label>
+    <label for="login_password">Password <i class="fa-solid fa-key" /></label>
     <input
         type="password"
         placeholder="Enter Password"
@@ -67,10 +68,12 @@
         value="123"
         required
     />
-    <button type="submit" on:click={login} class="button">Login</button>
+    <button type="submit" on:click={login} class="button"
+        >Login<i class="fa-solid fa-right-to-bracket" /></button
+    >
 </div>
 
-<Link to="/signup">Signup</Link>
+<Link to="/signup">Signup <i class="fa-solid fa-user-plus" /></Link>
 
 <!-- Forgot <a href="/"> password? </a> -->
 <style>
@@ -79,5 +82,7 @@
         flex-direction: column;
         flex-wrap: wrap;
         align-content: space-around;
+        width: 50%;
+        margin: 0 auto;
     }
 </style>

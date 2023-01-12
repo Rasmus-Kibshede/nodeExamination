@@ -18,7 +18,7 @@
     }
 </script>
 
-<button id="button_logout" on:click={handleLogout}>Logout</button>
+<button id="button_logout" on:click={handleLogout}><i class="fa-solid fa-right-from-bracket"></i>Logout</button>
 
 <style>
 </style>
