@@ -3,6 +3,7 @@
     import { onMount } from "svelte";
     const user = $global_user;
     const wand = {
+        user_id: $global_user.user_id,
         wand_name: "",
         wand_core: "",
         wand_wood: "",
@@ -42,21 +43,38 @@
     onMount(fetchCores);
     onMount(fetchWood);
 
-    async function saveUserInfo() {
-        const response = await fetch(`${$BASE_URL}/user`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json;charset=utf-8",
-            },
-            body: JSON.stringify(user),
-        });
-        const result = await response.json();
-
-        const message = result.messeage;
-        if (response.ok) {
-            saveUser($global_user);
+    function inputValidation() {
+        if (
+            !wand.wand_name ||
+            !wand.wand_core ||
+            !wand.wand_wood ||
+            !wand.wand_length
+        ) {
             // @ts-ignore
-            toastr.success("Updated", message);
+            toastr.error("All fields must the filled");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    async function saveWand() {
+        if (inputValidation()) {
+        } else {
+            const response = await fetch(`${$BASE_URL}/wand`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json;charset=utf-8",
+                },
+                body: JSON.stringify(wand),
+            });
+            const result = await response.json();
+
+            const message = result.messeage;
+            if (response.ok) {
+                // @ts-ignore
+                toastr.success("Wand created", message);
+            }
         }
     }
 </script>
@@ -75,8 +93,12 @@
         <tr class="flex_box">
             <td><label for="">Core: </label></td>
             <td>
-                <select name="Cores" bind:value={selectedCore}>
-                    <option value="-1" selected disabled hidden
+                <select
+                    name="Cores"
+                    bind:value={selectedCore}
+                    on:change={() => (wand.wand_core = selectedCore)}
+                >
+                    <option value="0" selected disabled hidden
                         >Choose Core</option
                     >
                     {#each cores as core}
@@ -88,8 +110,12 @@
         <tr class="flex_box">
             <td><label for="">Wood: </label></td>
             <td>
-                <select name="Wood" bind:value={selectedWood}>
-                    <option value="-1" selected disabled hidden
+                <select
+                    name="Wood"
+                    bind:value={selectedWood}
+                    on:change={() => (wand.wand_wood = selectedWood)}
+                >
+                    <option value="0" selected disabled hidden
                         >Choose Wood</option
                     >
                     {#each wood as w}
@@ -104,7 +130,7 @@
         </tr>
         <tr>
             <td class="flex_box"
-                ><button on:click={saveUserInfo}
+                ><button on:click={saveWand}
                     ><i class="fa-solid fa-floppy-disk" /> Create</button
                 ></td
             >
