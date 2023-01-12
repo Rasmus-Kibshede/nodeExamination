@@ -43,7 +43,7 @@
     onMount(fetchCores);
     onMount(fetchWood);
 
-    function inputValidation() {
+    async function saveWand() {
         if (
             !wand.wand_name ||
             !wand.wand_core ||
@@ -52,14 +52,6 @@
         ) {
             // @ts-ignore
             toastr.error("All fields must the filled");
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    async function saveWand() {
-        if (inputValidation()) {
         } else {
             const response = await fetch(`${$BASE_URL}/wand`, {
                 method: "POST",
@@ -69,6 +61,10 @@
                 body: JSON.stringify(wand),
             });
             const result = await response.json();
+
+            // Update the fk_wand_id on the frontend store
+            $global_user.fk_wand_id = result.wand_id;
+            saveUser($global_user);
 
             const message = result.messeage;
             if (response.ok) {

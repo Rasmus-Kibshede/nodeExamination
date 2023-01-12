@@ -4,16 +4,21 @@
     import { global_user, BASE_URL } from "../../../store/globals.js";
     const user = $global_user;
 
-    let wand = [];
+    $: wand = [];
 
     async function fetchWand() {
+        
         let response = await fetch(`${$BASE_URL}/wand/${user.fk_wand_id}`);
 
+
         const result = await response.json();
+        console.log(result);
+        console.log($global_user);
         wand = result.wand;
     }
 
-    onMount(fetchWand);
+   /*  onMount(fetchWand); */
+    fetchWand()
 </script>
 
 {#if user.fk_wand_id != null}

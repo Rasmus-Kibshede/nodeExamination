@@ -19,13 +19,19 @@ router.post("/wand", async (req, res) => {
     if (rows.affectedRows) {
         const [result, _] = await db.execute("UPDATE users SET fk_wand_id = ? WHERE user_id = ?",
             [rows.insertId, wand.user_id]);
+        console.log(rows);
 
         if (result.affectedRows) {
-
+            res.status(200).send({
+                message: "Wand created",
+                wand_id: rows.insertId
+            });
         }
+    } else {
+        res.status(400).send({ message: "ERROR" });
     }
 
-    res.send({ message: rows });
+
 });
 
 
