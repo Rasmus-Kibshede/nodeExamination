@@ -28,6 +28,10 @@ router.post("/wand", async (req, res) => {
     res.send({ message: rows });
 });
 
+router.get("/wand/cores", (req, res) => {
+    
+});
+
 
 
 
