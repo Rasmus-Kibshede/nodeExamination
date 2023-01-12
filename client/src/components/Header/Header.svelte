@@ -80,7 +80,7 @@
                 </Link>
                 <Link to="settings">
                     <div class="menuLink">
-                        <span class="fa-solid fa-gear" />
+                        <i class="fa-solid fa-gear" />
                         <span>Settings</span>
                     </div>
                 </Link>

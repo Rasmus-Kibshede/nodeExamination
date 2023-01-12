@@ -56,7 +56,9 @@
         </tr>
         <tr>
             <td class="flex_box"
-                ><button on:click={saveUserInfo}>Save</button></td
+                ><button on:click={saveUserInfo}
+                    ><i class="fa-solid fa-floppy-disk" /> Save</button
+                ></td
             >
         </tr>
     </table>
@@ -84,7 +86,8 @@
         align-content: center;
     }
 
-    label, input{
+    label,
+    input {
         font-size: medium;
     }
 </style>

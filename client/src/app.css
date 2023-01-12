@@ -18,6 +18,10 @@ a:hover {
   color: black;
 }
 
+i{
+  margin: 0 10px;
+}
+
 body {
   background-image: url("../public/hogwarts.jpg");
   background-position: center;
