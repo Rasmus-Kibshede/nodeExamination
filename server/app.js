@@ -52,10 +52,43 @@ app.use(woodRouter)
 // websockets
 import db from "./database/connection.js"
 
-io.on('connection', async (socket) => {
-    const [rows, _] = await db.execute("SELECT * FROM users");
+let users = [];
 
-    socket.emit("test", rows)
+async function getUsers() {
+    const [rows, _] = await db.execute("SELECT user_id, user_firstname, user_lastname, user_email FROM users");
+    return rows;
+}
+
+io.on('connection', async (socket) => {
+
+    io.emit("users", await getUsers());
+
+    socket.on("users", async () => {
+        users = await getUsers();
+    })
+
+    socket.on("update user", async (data) => {
+        const [rows, _] = await db.execute("UPDATE users SET user_firstname = ?, user_lastname = ?, user_email = ? WHERE user_id = ?",
+            [data.user_firstname, data.user_lastname, data.user_email, data.user_id]);
+
+        io.emit("status", {
+            success: rows.affectedRows,
+            word: "updated"
+        });
+
+    });
+
+    socket.on("delete user", async (data) => {
+        const [rows, _] = await db.execute("DELETE FROM users WHERE user_id = ?",
+            [data.user_id]);
+
+        io.emit("status", {
+            success: rows.affectedRows,
+            word: "deleted"
+        });
+
+        io.emit("users", await getUsers());
+    });
 });
 
 
