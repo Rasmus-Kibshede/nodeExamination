@@ -29,6 +29,12 @@ app.use(signupRouter)
 import userRouter from "./routers/UserRouter.js"
 app.use(userRouter)
 
+import coreRouter from "./routers/CoreRouter.js"
+app.use(coreRouter)
+
+import woodRouter from "./routers/WoodRouter.js"
+app.use(woodRouter)
+
 
 
 const PORT = 8080 || process.env.PORT;

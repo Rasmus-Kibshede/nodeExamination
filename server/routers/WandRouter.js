@@ -6,6 +6,7 @@ const router = Router();
 
 
 router.get("/wand/:id", async (req, res) => {
+    console.log("test");
     const [rows, fields] = await db.execute("SELECT * FROM wands where wand_id = ?", [req.params.id]);
 
     res.send({ wand: rows[0] })
@@ -19,17 +20,13 @@ router.post("/wand", async (req, res) => {
     if (rows.affectedRows) {
         const [result, _] = await db.execute("UPDATE users SET fk_wand_id = ? WHERE user_id = ?",
             [rows.insertId, wand.user_id]);
-        
-            if(result.affectedRows){
-                
-            }
+
+        if (result.affectedRows) {
+
+        }
     }
 
     res.send({ message: rows });
-});
-
-router.get("/wand/cores", (req, res) => {
-    
 });
 
 
