@@ -1,10 +1,21 @@
 import "dotenv/config";
 import express from "express";
+import { Server } from "socket.io";
+import http from "http";
+
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+    cors: {
+        origin: "http://localhost:5173",
+        methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
+    }
+});
+
 
 import cors from "cors";
-app.use(cors());
+app.use(cors({ credentials: true, origin: true }));
 
 app.use(express.json());
 
@@ -16,6 +27,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false } //false we are not using https, but http
 }));
+
 
 import loginRouter from "./routers/LoginRouter.js"
 app.use(loginRouter);
@@ -37,5 +49,16 @@ app.use(woodRouter)
 
 
 
+// websockets
+import db from "./database/connection.js"
+
+io.on('connection', async (socket) => {
+    const [rows, _] = await db.execute("SELECT * FROM users");
+
+    socket.emit("test", rows)
+});
+
+
+
 const PORT = 8080 || process.env.PORT;
-app.listen(PORT, () => console.log("The server is running on port:", PORT))
+server.listen(PORT, () => console.log("The server is running on port:", PORT))

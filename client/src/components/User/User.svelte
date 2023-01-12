@@ -1,9 +1,8 @@
 <script>
-    import { global_user } from "../../../store/globals.js";
-    const user = $global_user;
+    /* import { global_user } from "../../../store/globals.js";
+    const user = $global_user; */
+    export let user;
 </script>
-
-<h1>Welcome {user.user_firstname} {user.user_lastname}</h1>
 
 <div id="user_info_box">
     <div class="flex_box_span">
