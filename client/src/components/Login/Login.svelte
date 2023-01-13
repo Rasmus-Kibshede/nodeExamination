@@ -1,5 +1,10 @@
 <script>
-    import { BASE_URL, global_user, saveUser } from "../../../store/globals.js";
+    import {
+        BASE_URL,
+        global_user,
+        saveUser,
+        jwtToken,
+    } from "../../../store/globals.js";
 
     import { useNavigate, useLocation, Link } from "svelte-navigator";
 
@@ -32,6 +37,11 @@
             // checks if the server response with a ok and then sets a global user
             if (response.ok) {
                 $global_user = result.user;
+                
+                // JWT
+                // sets a cookie with the jwt token
+                document.cookie = `token=${result.jwtToken}`
+
                 saveUser($global_user);
                 const from = ($location.state && $location.state.from) || "/";
                 navigate(from, { replace: true });
