@@ -5,14 +5,24 @@
     const socket = io("http://127.0.0.1:8080");
 
     let users = [];
-
-    socket.on("users", (data) => {
-        users = data;
-    });
+    let roles = [];
 
     function updateUser(user) {
         socket.emit("update user", user);
     }
+
+    function deleteUser(user) {
+        socket.emit("delete user", user);
+    }
+
+    socket.on("users", (data) => {
+        users = data;
+        console.log(users);
+    });
+
+    socket.on("roles", (data) => {
+        roles = data;
+    });
 
     socket.on("status", (data) => {
         if (data) {
@@ -23,10 +33,6 @@
             toastr.error(`Error, user was not ${data.word}`);
         }
     });
-
-    function deleteUser(user) {
-        socket.emit("delete user", user);
-    }
 </script>
 
 <h1>Admin page</h1>
@@ -46,8 +52,15 @@
             <td><input type="text" bind:value={user.user_firstname} /></td>
             <td><input type="text" bind:value={user.user_lastname} /></td>
             <td><input type="text" bind:value={user.user_email} /></td>
-            <button on:click={() => updateUser(user)}>Save</button>
-            <button on:click={() => deleteUser(user)}>Delete</button>
+            <td
+                ><select bind:value={user.fk_role_id}>
+                    {#each roles as { role_id, role_name }}
+                        <option value={role_id}>{role_name}</option>
+                    {/each}
+                </select></td
+            >
+            <td><button on:click={() => updateUser(user)}>Save</button></td>
+            <td><button on:click={() => deleteUser(user)}>Delete</button></td>
         </tr>
     {/each}
 </table>

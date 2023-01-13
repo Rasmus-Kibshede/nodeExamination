@@ -54,40 +54,54 @@ import db from "./database/connection.js"
 
 let users = [];
 
+// get users
 async function getUsers() {
-    const [rows, _] = await db.execute("SELECT user_id, user_firstname, user_lastname, user_email FROM users");
+    const [rows, _] = await db.execute("SELECT * FROM users");
+
+    //Removes password, so password is not visable on frontend
+    rows.forEach((row) => { delete row.user_password });
     return rows;
 }
 
+//get roles
+async function getRoles() {
+    const [rows, _] = await db.execute("SELECT * FROM roles");
+    return rows;
+}
+
+// listen on a connection
 io.on('connection', async (socket) => {
 
-    io.emit("users", await getUsers());
+    // Sends data on the socket
+    socket.emit("users", await getUsers());
+
+    socket.emit("roles", await getRoles())
 
     socket.on("users", async () => {
         users = await getUsers();
     })
 
     socket.on("update user", async (data) => {
-        const [rows, _] = await db.execute("UPDATE users SET user_firstname = ?, user_lastname = ?, user_email = ? WHERE user_id = ?",
-            [data.user_firstname, data.user_lastname, data.user_email, data.user_id]);
+        console.log(data);
+        const [rows, _] = await db.execute("UPDATE users SET user_firstname = ?, user_lastname = ?, user_email = ?, fk_role_id = ? WHERE user_id = ?",
+            [data.user_firstname, data.user_lastname, data.user_email, data.fk_role_id, data.user_id]);
 
-        io.emit("status", {
+        socket.emit("status", {
             success: rows.affectedRows,
             word: "updated"
         });
-
     });
 
     socket.on("delete user", async (data) => {
         const [rows, _] = await db.execute("DELETE FROM users WHERE user_id = ?",
             [data.user_id]);
 
-        io.emit("status", {
+        socket.emit("status", {
             success: rows.affectedRows,
             word: "deleted"
         });
 
-        io.emit("users", await getUsers());
+        socket.emit("users", await getUsers());
     });
 });
 
