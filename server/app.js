@@ -6,6 +6,21 @@ import http from "http";
 
 const app = express();
 const server = http.createServer(app);
+
+// ------------------ Session ------------------ 
+import cors from "cors";
+app.use(cors({ credentials: true, origin: true }));
+
+import session from "express-session";
+const sessionMiddleware = session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+});
+app.use(sessionMiddleware);
+
+app.use(express.json());
+
 const io = new Server(server, {
     cors: {
         origin: "http://localhost:5173",
@@ -14,19 +29,6 @@ const io = new Server(server, {
 });
 
 
-import cors from "cors";
-app.use(cors({ credentials: true, origin: true }));
-
-app.use(express.json());
-
-// ------------------ Session ------------------ 
-import session from "express-session";
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false } //false we are not using https, but http
-}));
 
 
 import loginRouter from "./routers/LoginRouter.js"
@@ -49,10 +51,8 @@ app.use(woodRouter)
 
 
 
-// websockets
+// ------------------------------------------- websockets
 import db from "./database/connection.js"
-
-let users = [];
 
 // get users
 async function getUsers() {
@@ -69,8 +69,16 @@ async function getRoles() {
     return rows;
 }
 
+
+// convert a connect middleware to a Socket.IO middleware
+const wrap = middleware => (socket, next) => middleware(socket.request, {}, next);
+
+io.use(wrap(sessionMiddleware));
+
 // listen on a connection
 io.on('connection', async (socket) => {
+
+    console.log(socket.request.session);
 
     // Sends data on the socket
     socket.emit("users", await getUsers());
@@ -82,7 +90,7 @@ io.on('connection', async (socket) => {
     })
 
     socket.on("update user", async (data) => {
-        console.log(data);
+
         const [rows, _] = await db.execute("UPDATE users SET user_firstname = ?, user_lastname = ?, user_email = ?, fk_role_id = ? WHERE user_id = ?",
             [data.user_firstname, data.user_lastname, data.user_email, data.fk_role_id, data.user_id]);
 
