@@ -37,10 +37,10 @@
             // checks if the server response with a ok and then sets a global user
             if (response.ok) {
                 $global_user = result.user;
-                
+
                 // JWT
                 // sets a cookie with the jwt token
-                document.cookie = `token=${result.jwtToken}`
+                document.cookie = `token=${result.jwtToken}`;
 
                 saveUser($global_user);
                 const from = ($location.state && $location.state.from) || "/";
