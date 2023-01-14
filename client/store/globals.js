@@ -23,6 +23,6 @@ function getCookie(cname) {
     return "";
 }
 
-export const jwtToken = readable(() => getCookie("token"));
+export const jwtToken = writable(getCookie("token"));
 
 export const BASE_URL = readable("http://localhost:8080");

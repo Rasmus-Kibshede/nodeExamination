@@ -37,17 +37,21 @@
             // checks if the server response with a ok and then sets a global user
             if (response.ok) {
                 $global_user = result.user;
-
+                
                 // JWT
                 // sets a cookie with the jwt token
+                $jwtToken = result.jwtToken;
                 document.cookie = `token=${result.jwtToken}`;
+                
 
                 saveUser($global_user);
+
                 const from = ($location.state && $location.state.from) || "/";
                 navigate(from, { replace: true });
 
                 // @ts-ignore
                 toastr.success("Loggedin", message);
+                // window.location.replace("/");
             } else {
                 // @ts-ignore
                 toastr.error("Error", message);
