@@ -4,12 +4,16 @@
         global_user,
         saveUser,
         jwtToken,
+        currentURL,
     } from "../../../store/globals.js";
 
     import { useNavigate, useLocation, Link } from "svelte-navigator";
 
     const navigate = useNavigate();
     const location = useLocation();
+
+    // A part of menu page highlighter
+    $currentURL = $location.pathname;
 
     async function login() {
         const user = {
@@ -37,12 +41,11 @@
             // checks if the server response with a ok and then sets a global user
             if (response.ok) {
                 $global_user = result.user;
-                
+
                 // JWT
                 // sets a cookie with the jwt token
                 $jwtToken = result.jwtToken;
                 document.cookie = `token=${result.jwtToken}`;
-                
 
                 saveUser($global_user);
 

@@ -1,5 +1,11 @@
 <script>
+    import { currentURL } from "../../../store/globals";
     import EditUser from "../../components/User/EditUser.svelte";
+
+    // A part of menu page highlighter
+    import { useLocation } from "svelte-navigator";
+    const location = useLocation();
+    $currentURL = $location.pathname;
 
     let showEditUser = false;
 </script>

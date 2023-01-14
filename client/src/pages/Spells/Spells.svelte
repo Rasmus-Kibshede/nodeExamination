@@ -1,6 +1,11 @@
 <script>
-    import { BASE_URL } from "../../../store/globals";
+    import { BASE_URL, currentURL } from "../../../store/globals";
     import { onMount } from "svelte";
+
+    // A part of menu page highlighter
+    import { useLocation } from "svelte-navigator";
+    const location = useLocation();
+    $currentURL = $location.pathname;
 
     let spells = [];
 

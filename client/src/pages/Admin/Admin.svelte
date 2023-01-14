@@ -1,7 +1,11 @@
 <script>
     import { io } from "socket.io-client";
-    import { jwtToken } from "../../../store/globals";
-    // import User from "../../components/User/User.svelte";
+    import { jwtToken, currentURL } from "../../../store/globals";
+
+    // A part of menu page highlighter
+    import { useLocation } from "svelte-navigator";
+    const location = useLocation();
+    $currentURL = $location.pathname;
 
     const socket = io("http://127.0.0.1:8080");
 

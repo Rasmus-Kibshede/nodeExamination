@@ -26,3 +26,6 @@ function getCookie(cname) {
 export const jwtToken = writable(getCookie("token"));
 
 export const BASE_URL = readable("http://localhost:8080");
+
+
+export const currentURL = writable('');
