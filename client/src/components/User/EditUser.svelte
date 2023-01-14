@@ -1,5 +1,10 @@
 <script>
-    import { global_user, BASE_URL, saveUser } from "../../../store/globals.js";
+    import {
+        global_user,
+        BASE_URL,
+        saveUser,
+        jwtToken,
+    } from "../../../store/globals.js";
     const user = $global_user;
 
     async function saveUserInfo() {
@@ -7,6 +12,7 @@
             method: "POST",
             headers: {
                 "Content-Type": "application/json;charset=utf-8",
+                Authorization: "Bearer " + $jwtToken,
             },
             body: JSON.stringify(user),
         });

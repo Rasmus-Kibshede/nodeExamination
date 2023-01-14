@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import { Server } from "socket.io";
 import http from "http";
+import jwt from "jsonwebtoken"
 
 
 const app = express();
@@ -19,8 +20,6 @@ const io = new Server(server, {
         methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
     }
 });
-
-
 
 
 import loginRouter from "./routers/LoginRouter.js"
@@ -61,6 +60,24 @@ async function getRoles() {
     return rows;
 }
 
+
+function socket_auth(token, user) {
+    // console.log("token", token);
+
+    const userData = user;
+
+    let isAuth = false;
+
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        // if (err) return res.sendStatus(403)
+        // console.log("user", user);
+        isAuth = true;
+    });
+
+    return isAuth
+};
+
+
 // listen on a connection
 io.on('connection', async (socket) => {
 
@@ -75,13 +92,21 @@ io.on('connection', async (socket) => {
 
     socket.on("update user", async (data) => {
 
-        const [rows, _] = await db.execute("UPDATE users SET user_firstname = ?, user_lastname = ?, user_email = ?, fk_role_id = ? WHERE user_id = ?",
-            [data.user_firstname, data.user_lastname, data.user_email, data.fk_role_id, data.user_id]);
+        if (socket_auth(data.token, data.user)) {
+            const user = data.user
+            const [rows, _] = await db.execute("UPDATE users SET user_firstname = ?, user_lastname = ?, user_email = ?, fk_role_id = ? WHERE user_id = ?",
+                [user.user_firstname, user.user_lastname, user.user_email, user.fk_role_id, user.user_id]);
 
-        socket.emit("status", {
-            success: rows.affectedRows,
-            word: "updated"
-        });
+            socket.emit("status", {
+                success: rows.affectedRows,
+                word: "updated"
+            });
+        } else {
+            socket.emit("status", {
+                success: 0,
+                word: "updated"
+            });
+        }
     });
 
     socket.on("delete user", async (data) => {

@@ -1,12 +1,18 @@
 <script>
     // @ts-nocheck
-    import { global_user, BASE_URL } from "../../../store/globals.js";
+    import { global_user, BASE_URL, jwtToken } from "../../../store/globals.js";
+    // import { onMount } from "svelte";
     const user = $global_user;
 
     $: wand = [];
 
     async function fetchWand() {
-        let response = await fetch(`${$BASE_URL}/wand/${user.fk_wand_id}`);
+        let response = await fetch(`${$BASE_URL}/wand/${user.fk_wand_id}`, {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + $jwtToken,
+            },
+        });
 
         const result = await response.json();
         console.log(result);

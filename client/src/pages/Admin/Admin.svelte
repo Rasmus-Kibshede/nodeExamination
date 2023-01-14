@@ -1,5 +1,6 @@
 <script>
     import { io } from "socket.io-client";
+    import { jwtToken } from "../../../store/globals";
     // import User from "../../components/User/User.svelte";
 
     const socket = io("http://127.0.0.1:8080");
@@ -8,16 +9,15 @@
     let roles = [];
 
     function updateUser(user) {
-        socket.emit("update user", user);
+        socket.emit("update user", { user: user, token: $jwtToken });
     }
 
     function deleteUser(user) {
-        socket.emit("delete user", user);
+        socket.emit("delete user", { user: user, token: $jwtToken });
     }
 
     socket.on("users", (data) => {
         users = data;
-        console.log(users);
     });
 
     socket.on("roles", (data) => {

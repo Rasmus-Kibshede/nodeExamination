@@ -1,7 +1,11 @@
 <script>
-    import { global_user, BASE_URL, saveUser } from "../../../store/globals.js";
+    import {
+        global_user,
+        BASE_URL,
+        saveUser,
+        jwtToken,
+    } from "../../../store/globals.js";
     import { onMount } from "svelte";
-    const user = $global_user;
     const wand = {
         user_id: $global_user.user_id,
         wand_name: "",
@@ -57,6 +61,7 @@
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json;charset=utf-8",
+                    Authorization: "Bearer " + $jwtToken,
                 },
                 body: JSON.stringify(wand),
             });
@@ -139,7 +144,7 @@
             </tr>
         </table>
     </div>
-    {:else}
+{:else}
     <h2>You already have a wand</h2>
 {/if}
 
