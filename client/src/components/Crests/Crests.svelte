@@ -125,6 +125,8 @@
         display: flex;
         align-items: baseline;
         margin-bottom: 50px;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.1);
     }
 
     .flexbox_crest:nth-child(even) {
