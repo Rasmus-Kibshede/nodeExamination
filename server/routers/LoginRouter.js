@@ -53,11 +53,6 @@ router.post("/login", async (req, res, next) => {
 });
 
 router.get("/logout", (req, res) => {
-<<<<<<< HEAD
-    console.log(req.session);
-    req.session.destroy();
-=======
->>>>>>> jwt
     res.send({ message: "logged out" });
 });
 

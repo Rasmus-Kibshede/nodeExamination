@@ -7,3 +7,4 @@ TOOLS
  - Nodemon (Dynamisk opdatering)
  - Dotenv (env variabler)
  - Socket.io (Web sockets)
+ - JWT (jsonwebtoken)

@@ -11,14 +11,6 @@ const server = http.createServer(app);
 import cors from "cors";
 app.use(cors({ credentials: true, origin: true }));
 
-import session from "express-session";
-const sessionMiddleware = session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true
-});
-app.use(sessionMiddleware);
-
 app.use(express.json());
 
 const io = new Server(server, {
@@ -69,16 +61,8 @@ async function getRoles() {
     return rows;
 }
 
-
-// convert a connect middleware to a Socket.IO middleware
-const wrap = middleware => (socket, next) => middleware(socket.request, {}, next);
-
-io.use(wrap(sessionMiddleware));
-
 // listen on a connection
 io.on('connection', async (socket) => {
-
-    console.log(socket.request.session);
 
     // Sends data on the socket
     socket.emit("users", await getUsers());
