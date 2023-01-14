@@ -14,60 +14,17 @@
 
     <Router>
         <nav id="main_menu">
-            <!-- <table>
-                <tr>
-                    <Link to="/">
-                        <div class="menuLink">
-                            <i class="fa-solid fa-house" />
-                            <span>Home</span>
-                        </div>
-                    </Link>
-                </tr>
-                {#if $global_user}
-                    <tr>
-                        <Link to="/account">
-                            <div class="menuLink">
-                                <i class="fa-solid fa-user" />
-                                <span>Account</span>
-                            </div>
-                        </Link>
-                    </tr>
-                    <tr>
-                        <Link to="settings">
-                            <div class="menuLink">
-                                <span class="fa-solid fa-gear" />
-                                <span>Settings</span>
-                            </div>
-                        </Link>
-                    </tr>
-                    {#if $global_user.fk_role_id == 1}
-                        <tr>
-                            <Link to="/admin">
-                                <div class="menuLink">
-                                    <i class="fa-solid fa-lock" />
-                                    <span>Admin</span>
-                                </div>
-                            </Link>
-                        </tr>
-                    {/if}
-                    <tr>
-                        <Logout />
-                    </tr>
-                {:else}
-                    <tr>
-                        <Link to="/login">
-                            <div class="menuLink">
-                                <i class="fa-solid fa-right-to-bracket" />
-                                <span>Login</span>
-                            </div>
-                        </Link>
-                    </tr>
-                {/if}
-            </table> -->
             <Link to="/">
                 <div class="menuLink">
                     <i class="fa-solid fa-house" />
                     <span>Home</span>
+                </div>
+            </Link>
+
+            <Link to="/spells">
+                <div class="menuLink">
+                    <i class="fa-solid fa-book-tanakh"></i>
+                    <span>Spells</span>
                 </div>
             </Link>
 

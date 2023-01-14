@@ -40,6 +40,9 @@ app.use(coreRouter)
 import woodRouter from "./routers/WoodRouter.js"
 app.use(woodRouter)
 
+import spellRouter from "./routers/SpellRouter.js";
+app.use(spellRouter)
+
 
 
 // ------------------------------------------- websockets
