@@ -114,7 +114,7 @@ io.on('connection', async (socket) => {
 
     socket.on("delete user", async (data) => {
         const [rows, _] = await db.execute("DELETE FROM users WHERE user_id = ?",
-            [data.user_id]);
+            [data.user.user_id]);
 
         socket.emit("status", {
             success: rows.affectedRows,
