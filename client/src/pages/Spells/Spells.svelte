@@ -24,7 +24,7 @@
     let searchedSpell;
 
     $: search = spells.filter((spell) =>
-        spell.name.toLowerCase().includes(searchedSpell)
+        spell.spell_name.toLowerCase().includes(searchedSpell)
     );
 
     $: newSpells = searchedSpell ? search : spells;
@@ -38,9 +38,9 @@
     bind:value={searchedSpell}
 />
 
-{#each newSpells as { name, description }}
-    <h4>{name}</h4>
-    <p>{description}</p>
+{#each newSpells as { spell_name, spell_description }}
+    <h4>{spell_name}</h4>
+    <p>{spell_description}</p>
     <br />
 {/each}
 
