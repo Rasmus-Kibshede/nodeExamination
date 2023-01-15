@@ -9,15 +9,16 @@
     import { useLocation } from "svelte-navigator";
     const location = useLocation();
     $currentURL = $location.pathname;
+    const user = $global_user;
 </script>
 
-<h1>Welcome {$global_user.user_firstname} {$global_user.user_lastname}</h1>
+<h1>Welcome {user.user_firstname} {user.user_lastname}</h1>
 
-<User user={$global_user} />
+<User {user} />
 
-<House house_name={$global_user.user_house} />
+<House house_name={user.user_house} />
 
-{#if $global_user.fk_wand_id != null}
+{#if user.fk_wand_id != null}
     <Wand />
 {:else}
     <CreateWand />
