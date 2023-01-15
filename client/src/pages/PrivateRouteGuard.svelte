@@ -5,8 +5,6 @@
   const navigate = useNavigate();
   const location = useLocation();
 
-  //TODO check session backend also, so you can stay loggedin after a page refesh
- 
   $: if (!$jwtToken) {
     navigate("/", {
       state: { from: $location.pathname },

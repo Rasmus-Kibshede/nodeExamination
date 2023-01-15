@@ -1,8 +1,6 @@
 <script>
-    import { jwtToken, currentURL } from "../../../store/globals";
+    import { currentURL } from "../../../store/globals";
     import Crests from "../../components/Crests/Crests.svelte";
-
-    console.log("cookie test", $jwtToken);
 
     // A part of menu page highlighter
     import { useLocation } from "svelte-navigator";

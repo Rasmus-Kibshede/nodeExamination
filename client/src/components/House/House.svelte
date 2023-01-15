@@ -9,6 +9,7 @@
         house_description: "",
         house_img_name: "",
     };
+    
     const path = "../../../public/crests/";
 
     async function fetchHouse() {

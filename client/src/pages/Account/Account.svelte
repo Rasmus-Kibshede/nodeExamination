@@ -3,10 +3,10 @@
     import User from "../../components/User/User.svelte";
     import Wand from "../../components/Wand/Wand.svelte";
     import CreateWand from "../../components/Wand/CreateWand.svelte";
+    import House from "../../components/House/House.svelte";
 
     // A part of menu page highlighter
     import { useLocation } from "svelte-navigator";
-    import House from "../../components/House/House.svelte";
     const location = useLocation();
     $currentURL = $location.pathname;
 </script>
