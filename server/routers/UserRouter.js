@@ -17,4 +17,17 @@ router.post("/user", authenticateToken, async (req, res) => {
     }
 });
 
+router.patch("/users/:id", authenticateToken, async (req, res) => {
+    const [rows, _] = await db.execute("UPDATE users SET user_house = ? WHERE user_id = ?",
+        [req.body.house_name, req.params.id]);
+
+    if (rows) {
+        res.status(200).send({ message: "Updated your house" })
+    } else {
+        res.status(400).send({ message: "You did not get a house, try again" });
+    }
+
+
+});
+
 export default router;
