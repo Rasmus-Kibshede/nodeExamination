@@ -14,11 +14,11 @@
 
         if (resposne.ok) {
             houses = result.houses;
-            console.log(houses);
         } else {
             // @ts-ignore
             toastr.error(message);
         }
+        console.log("ho", result);
     }
 
     onMount(fetchHouses);

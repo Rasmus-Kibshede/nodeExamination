@@ -9,17 +9,13 @@
     import House from "../../components/House/House.svelte";
     const location = useLocation();
     $currentURL = $location.pathname;
-
-    console.log($global_user);
 </script>
 
 <h1>Welcome {$global_user.user_firstname} {$global_user.user_lastname}</h1>
 
 <User user={$global_user} />
 
-<House
-    house={{ house_name: "TEST", house_decription: "TEST TEST DECRIBTION" }}
-/>
+<House house_name={$global_user.user_house} />
 
 {#if $global_user.fk_wand_id != null}
     <Wand />
