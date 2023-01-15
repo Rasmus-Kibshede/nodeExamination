@@ -28,23 +28,32 @@ router.post("/signup", async (req, res, next) => {
         [user.email, user.encrypedPassword, user.firstname, user.lastname]);
 
     if (resposne) {
-        res.status(200).send({ message: "You are now signed up, you can now login" })
-    } else {
-        res.status(400).send({ message: "Database error" });
+    //     res.status(200).send({ message: "You are now signed up, you can now login" })
+    // } else {
+    //     res.status(400).send({ message: "Database error" });
     }
 
     // remake with async await
     // skal ikke sende mails endnu, da der testes
-    /* if (resposne) {
-        sendMail(user.email, "Welcome to the pokemon website")
-            .then(() => res.status(200).send({ message: "You are now signed up" }))
+    if (resposne) {
+
+        // const resposne = await sendMail(user.email, "Welcome to the Wizard World")
+        // try {
+        //     if(resposne.ok){
+        //     res.status(200).send({ message: "You are now signed up" })
+        // }else{
+        //     res.status(400).send({ message: "Something when wrong, database error" })
+        // }
+        // } catch (error) {
+        //     res.status(400).send({ message: error })
+        // }
+
+        sendMail(user.email, "Welcome to the Wizard World")
+            .then(() => res.status(200).send({ message: "You are now signed up, you can now login" }))
             .catch(errorMessage => res.status(400).send({ message: errorMessage }));
     } else {
         res.status(400).send({ message: "Database error" });
-    } */
-
-
-
+    }
 });
 
 
