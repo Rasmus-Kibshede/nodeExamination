@@ -7,8 +7,6 @@
     const location = useLocation();
     $currentURL = $location.pathname;
 
-    let spells = [];
-
     async function fecthSpells() {
         const response = await fetch(`${$BASE_URL}/api/spells`);
 
@@ -20,11 +18,27 @@
     }
 
     onMount(fecthSpells);
+
+    let spells = [];
+
+    let searchedSpell;
+
+    $: search = spells.filter((spell) =>
+        spell.name.toLowerCase().includes(searchedSpell)
+    );
+
+    $: newSpells = searchedSpell ? search : spells;
 </script>
 
 <h1>Spells</h1>
 
-{#each spells as { name, description }}
+<input
+    type="text"
+    placeholder="Search for a spell"
+    bind:value={searchedSpell}
+/>
+
+{#each newSpells as { name, description }}
     <h4>{name}</h4>
     <p>{description}</p>
     <br />
