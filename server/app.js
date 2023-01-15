@@ -43,6 +43,9 @@ app.use(woodRouter)
 import spellRouter from "./routers/SpellRouter.js";
 app.use(spellRouter)
 
+import houseRouter from "./routers/HouseRouter.js";
+app.use(houseRouter)
+
 
 
 // ------------------------------------------- websockets
