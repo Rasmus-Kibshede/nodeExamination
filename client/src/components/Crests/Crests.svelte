@@ -18,7 +18,6 @@
             // @ts-ignore
             toastr.error(message);
         }
-        console.log("ho", result);
     }
 
     onMount(fetchHouses);

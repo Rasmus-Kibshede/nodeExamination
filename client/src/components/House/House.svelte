@@ -4,7 +4,11 @@
     import { BASE_URL } from "../../../store/globals.js";
     import { onMount } from "svelte";
 
-    let house = [];
+    let house = {
+        house_name: "",
+        house_description: "",
+        house_img_name: "",
+    };
     const path = "../../../public/crests/";
 
     async function fetchHouse() {
