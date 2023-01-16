@@ -6,13 +6,13 @@ import { authenticateToken } from "../util/auth.js";
 const router = Router();
 
 
-router.get("/wand/:id", async (req, res) => {
+router.get("/api/wand/:id", async (req, res) => {
     const [rows, fields] = await db.execute("SELECT * FROM wands where wand_id = ?", [req.params.id]);
 
     res.send({ wand: rows[0] })
 });
 
-router.post("/wand", authenticateToken, async (req, res) => {
+router.post("/api/wand", authenticateToken, async (req, res) => {
     const wand = req.body;
     const [rows, _] = await db.execute("INSERT INTO wands(wand_name, wand_core, wand_wood, wand_length) VALUES (?,?,?,?)",
         [wand.wand_name, wand.wand_core, wand.wand_wood, wand.wand_length]);

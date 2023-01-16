@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 
 const router = Router();
 
-router.post("/login", async (req, res, next) => {
+router.post("/api/login", async (req, res, next) => {
     //Session check
 
     const authHeader = req.headers['authorization']
@@ -52,7 +52,7 @@ router.post("/login", async (req, res, next) => {
     });
 });
 
-router.get("/logout", (req, res) => {
+router.get("/api/logout", (req, res) => {
     res.send({ message: "logged out" });
 });
 

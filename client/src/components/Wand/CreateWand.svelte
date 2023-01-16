@@ -21,7 +21,7 @@
     let selectedWood;
 
     async function fetchCores() {
-        const response = await fetch(`${$BASE_URL}/cores`);
+        const response = await fetch(`${$BASE_URL}/api/cores`);
         const result = await response.json();
 
         if (response.ok) {
@@ -33,7 +33,7 @@
     }
 
     async function fetchWood() {
-        const response = await fetch(`${$BASE_URL}/wood`);
+        const response = await fetch(`${$BASE_URL}/api/wood`);
         const result = await response.json();
 
         if (response.ok) {
@@ -57,7 +57,7 @@
             // @ts-ignore
             toastr.error("All fields must the filled");
         } else {
-            const response = await fetch(`${$BASE_URL}/wand`, {
+            const response = await fetch(`${$BASE_URL}/api/wand`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json;charset=utf-8",

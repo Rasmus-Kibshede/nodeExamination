@@ -4,7 +4,7 @@ import db from "../database/connection.js"
 const router = Router();
 
 
-router.get("/cores", async (req, res) => {
+router.get("/api/cores", async (req, res) => {
     const [rows, _] = await db.execute("SELECT * FROM cores");
     if (rows) {
         res.status(200).send({ cores: rows });

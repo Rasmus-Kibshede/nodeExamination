@@ -22,7 +22,7 @@
         const randomHouseName =
             houses[Math.floor(Math.random() * houses.length)];
 
-        const response = await fetch(`${$BASE_URL}/users/${user.user_id}`, {
+        const response = await fetch(`${$BASE_URL}/api/users/${user.user_id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json;charset=utf-8",

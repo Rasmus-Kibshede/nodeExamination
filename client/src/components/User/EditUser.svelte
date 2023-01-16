@@ -8,7 +8,7 @@
     const user = $global_user;
 
     async function saveUserInfo() {
-        const response = await fetch(`${$BASE_URL}/user`, {
+        const response = await fetch(`${$BASE_URL}/api/user`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json;charset=utf-8",

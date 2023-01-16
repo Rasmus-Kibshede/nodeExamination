@@ -27,7 +27,7 @@
             // @ts-ignore
             toastr.error("Error", "Fill out the blanks");
         } else {
-            let response = await fetch(`${$BASE_URL}/login`, {
+            let response = await fetch(`${$BASE_URL}/api/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json;charset=utf-8",

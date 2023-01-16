@@ -5,7 +5,7 @@ import { authenticateToken } from "../util/auth.js";
 const router = Router();
 
 // Authorization case
-router.post("/user", authenticateToken, async (req, res) => {
+router.post("/api/user", authenticateToken, async (req, res) => {
     const user = req.body;
 
     const [rows, _] = await db.execute("UPDATE users SET user_firstname = ?, user_lastname = ?, user_email = ? WHERE user_id = ?",
@@ -17,7 +17,7 @@ router.post("/user", authenticateToken, async (req, res) => {
     }
 });
 
-router.patch("/users/:id", authenticateToken, async (req, res) => {
+router.patch("/api/users/:id", authenticateToken, async (req, res) => {
     const [rows, _] = await db.execute("UPDATE users SET user_house = ? WHERE user_id = ?",
         [req.body.house_name, req.params.id]);
 

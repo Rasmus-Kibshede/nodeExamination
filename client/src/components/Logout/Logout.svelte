@@ -14,7 +14,7 @@
         document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
         
-        await fetch(`${$BASE_URL}/logout`);
+        await fetch(`${$BASE_URL}/api/logout`);
         // @ts-ignore
         toastr.success("Logged out", "You are now logged out");
 

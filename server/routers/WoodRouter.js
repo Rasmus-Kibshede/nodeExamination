@@ -4,7 +4,7 @@ import db from "../database/connection.js"
 const router = Router();
 
 
-router.get("/wood", async (req, res) => {
+router.get("/api/wood", async (req, res) => {
     const [rows, _] = await db.execute("SELECT * FROM woods");
 
     if (rows) {
