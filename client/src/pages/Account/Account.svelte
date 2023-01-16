@@ -1,6 +1,7 @@
 <script>
     import {
         global_user,
+        saveUser,
         currentURL,
         BASE_URL,
         jwtToken,
@@ -40,6 +41,8 @@
         if (response.ok) {
             // $global_user.user_house = randomHouseName;
             user.user_house = randomHouseName;
+            $global_user.user_house = randomHouseName;
+            saveUser($global_user);
 
             // @ts-ignore
             toastr.success(message);
