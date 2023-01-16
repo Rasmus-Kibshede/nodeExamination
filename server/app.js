@@ -130,5 +130,5 @@ io.on('connection', async (socket) => {
 
 
 
-const PORT = 8080 || process.env.PORT;
+const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => console.log("The server is running on port:", PORT))
