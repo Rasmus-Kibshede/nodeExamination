@@ -1,6 +1,6 @@
 <script>
     import { io } from "socket.io-client";
-    import { jwtToken, currentURL } from "../../../store/globals";
+    import { jwtToken, currentURL, saveUser } from "../../../store/globals";
 
     // A part of menu page highlighter
     import { useLocation } from "svelte-navigator";

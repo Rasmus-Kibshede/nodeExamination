@@ -73,7 +73,7 @@
     />
 
     <label for="signup_password">Password:</label>
-    <input type="text" id="signup_password" placeholder="Enter Password" />
+    <input type="password" id="signup_password" placeholder="Enter Password" />
 
     <label for="signup_firstname">Firstname:</label>
     <input type="text" id="signup_firstname" placeholder="Enter Firstname" />

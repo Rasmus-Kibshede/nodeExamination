@@ -114,7 +114,7 @@
 />
 
 {#each searchedSpells as spell}
-    <div class="flex_box">
+    <div class="spell_box">
         <div>
             <h4>{spell.spell_name}</h4>
             <p>{spell.spell_description}</p>
@@ -132,10 +132,11 @@
 {/each}
 
 <style>
-    .flex_box {
+    .spell_box {
         margin-bottom: 50px;
         padding: 10px;
         border: solid 1px black;
         border-radius: 3px;
+        background-color: rgba(250, 235, 215, 0.7);
     }
 </style>

@@ -8,7 +8,7 @@
     $currentURL = $location.pathname;
 </script>
 
-<h1>Welcome to Hogwarts!</h1>
+<h1>Welcome to Wizard World!</h1>
 
 <Crests />
 

@@ -27,25 +27,6 @@
     }
 </script>
 
-<!-- <div id="user_info_box">
-    <div class="flex_box">
-        <label for="">Firstname: </label>
-        <input bind:value={user.user_firstname} />
-    </div>
-    <div class="flex_box">
-        <label for="">Lastname: </label>
-        <input bind:value={user.user_lastname} />
-    </div>
-    <div class="flex_box">
-        <label for="">Email: </label>
-        <input bind:value={user.user_email} />
-    </div>
-
-    <div class="flex_box">
-        <button on:click={saveUserInfo}>Save</button>
-    </div>
-</div> -->
-
 <div>
     <table id="user_info_box">
         <tr class="flex_box">
